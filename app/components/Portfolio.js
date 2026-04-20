@@ -1,44 +1,12 @@
+// app/components/Portfolio.js
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { FiEye, FiCheck } from "react-icons/fi";
-import { useState } from "react";
+import { useOrder, designOptions } from "../context/OrderContext";
 
 const Portfolio = () => {
-  // Состояние для отслеживания выбранного варианта (для демонстрации)
-  const [selectedStyle, setSelectedStyle] = useState(null);
-
-  // Данные о вариантах дизайна
-  const designs = [
-    {
-      id: "modern",
-      title: "Современный",
-      description: "Градиенты, анимации, тёмная тема. Идеально для IT и digital-услуг",
-      image: "/design-modern.jpg", // заменишь на свои скриншоты
-      features: ["Анимации Framer Motion", "Тёмная тема", "Градиентные акценты"],
-      color: "from-purple-500 to-pink-500",
-      tags: ["IT", "Digital", "Стартап"]
-    },
-    {
-      id: "minimal",
-      title: "Минимализм",
-      description: "Чистый дизайн, много воздуха, акцент на контент. Подходит для экспертов и консультантов",
-      image: "/design-minimal.jpg",
-      features: ["Светлая тема", "Чёткая типографика", "Минимум декора"],
-      color: "from-gray-500 to-slate-700",
-      tags: ["Эксперт", "Консалтинг", "Услуги"]
-    },
-    {
-      id: "business",
-      title: "Бизнес",
-      description: "Строгий стиль, синие тона, доверие и надёжность. Для B2B и корпоративных клиентов",
-      image: "/design-business.jpg",
-      features: ["Синяя гамма", "Геометричные формы", "Акцент на цифры"],
-      color: "from-blue-600 to-indigo-700",
-      tags: ["B2B", "Корпоративный", "Финансы"]
-    }
-  ];
+  const { selectedStyle, setSelectedStyle } = useOrder();
 
   // Анимация для карточек
   const containerVariants = {
@@ -58,6 +26,11 @@ const Portfolio = () => {
     }
   };
 
+  // Обработчик выбора стиля
+  const handleSelectStyle = (styleId) => {
+    setSelectedStyle(styleId === selectedStyle ? null : styleId);
+  };
+
   return (
     <section id="portfolio" className="py-16 md:py-20 px-3 bg-slate-900">
       <div className="w-full max-w-6xl mx-auto">
@@ -74,9 +47,20 @@ const Portfolio = () => {
             Выберите стиль для вашего лендинга
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-            Три популярных направления дизайна. Каждый можно адаптировать под ваш бренд — 
-            цвета, шрифты, анимации
+            Три популярных направления дизайна. Каждый можно адаптировать под ваш бренд
           </p>
+          
+          {/* Индикатор выбранного стиля */}
+          {selectedStyle && (
+            <motion.p
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-purple-400 text-sm mt-3"
+            >
+              ✓ Выбран стиль «{designOptions.find(d => d.id === selectedStyle)?.title}». 
+              Будет указан в заявке автоматически
+            </motion.p>
+          )}
         </motion.div>
 
         {/* Карточки с вариантами */}
@@ -87,39 +71,33 @@ const Portfolio = () => {
           viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6"
         >
-          {designs.map((design) => (
+          {designOptions.map((design) => (
             <motion.div
               key={design.id}
               variants={cardVariants}
               className={`group relative bg-slate-800 rounded-xl overflow-hidden border transition-all duration-300 cursor-pointer
                 ${selectedStyle === design.id 
-                  ? 'border-purple-500 shadow-lg shadow-purple-500/20' 
+                  ? 'border-purple-500 shadow-lg shadow-purple-500/30 ring-1 ring-purple-500/50' 
                   : 'border-slate-700 hover:border-slate-600'
                 }`}
-              onClick={() => setSelectedStyle(design.id)}
+              onClick={() => handleSelectStyle(design.id)}
             >
               {/* Градиентная полоска сверху */}
               <div className={`h-1.5 w-full bg-gradient-to-r ${design.color}`}></div>
               
-              {/* Изображение-заглушка (заменишь на свои скриншоты) */}
+              {/* Изображение-заглушка */}
               <div className="relative h-40 sm:h-44 bg-slate-700 overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${design.color} opacity-20`}></div>
-                
-                {/* Временная заглушка вместо картинки */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="text-4xl font-bold text-white/30">
                     {design.title[0]}
                   </span>
                 </div>
-                
-                {/* Иконка "посмотреть" при наведении */}
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <FiEye className="text-white text-2xl" />
                 </div>
-
-                {/* Метка "выбрано" */}
                 {selectedStyle === design.id && (
-                  <div className="absolute top-2 right-2 bg-purple-500 rounded-full p-1">
+                  <div className="absolute top-2 right-2 bg-purple-500 rounded-full p-1.5 shadow-lg">
                     <FiCheck className="text-white text-sm" />
                   </div>
                 )}
@@ -127,7 +105,6 @@ const Portfolio = () => {
 
               {/* Контент карточки */}
               <div className="p-4">
-                {/* Теги */}
                 <div className="flex flex-wrap gap-1.5 mb-3">
                   {design.tags.map((tag, idx) => (
                     <span 
@@ -139,17 +116,19 @@ const Portfolio = () => {
                   ))}
                 </div>
 
-                {/* Заголовок */}
-                <h3 className="text-lg font-bold text-white mb-1.5">
-                  {design.title}
-                </h3>
+                <div className="flex items-center justify-between mb-1.5">
+                  <h3 className="text-lg font-bold text-white">
+                    {design.title}
+                  </h3>
+                  <span className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                    {design.price}
+                  </span>
+                </div>
                 
-                {/* Описание */}
                 <p className="text-gray-400 text-sm mb-3 leading-relaxed">
                   {design.description}
                 </p>
 
-                {/* Особенности */}
                 <ul className="space-y-1">
                   {design.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-xs text-gray-300">
@@ -163,16 +142,27 @@ const Portfolio = () => {
           ))}
         </motion.div>
 
-        {/* Пояснение */}
-        <motion.p
+        {/* Призыв к действию */}
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-center text-gray-500 text-xs md:text-sm mt-8"
+          className="text-center mt-10"
         >
-          * Это демо-варианты. Финальный дизайн разрабатывается индивидуально с учётом вашего бренда
-        </motion.p>
+          <p className="text-gray-400 text-sm mb-4">
+            {selectedStyle 
+              ? "Отлично! Теперь заполните форму ниже, и я свяжусь с вами для обсуждения деталей"
+              : "Выберите подходящий стиль и заполните форму обратной связи"
+            }
+          </p>
+          <a
+            href="#contact"
+            className="inline-block px-6 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 text-sm"
+          >
+            {selectedStyle ? "Заполнить заявку" : "Выбрать и продолжить"}
+          </a>
+        </motion.div>
       </div>
     </section>
   );
