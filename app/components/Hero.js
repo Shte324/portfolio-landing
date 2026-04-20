@@ -28,7 +28,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-lg">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden 
+    bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-lg py-10 md:py-0">
       {/* Декоративный фон - анимированные круги */}
       <div className="absolute inset-0 w-full h-full">
         {/* <div className="absolute top-20 left-10 w-72 h-72 bg-red-500 rounded-full !!!!!!!!!mix-blend-multiply!!!!!!!!!!!!!  filter blur-3xl opacity-60 animate-blob"></div> */}
@@ -37,8 +38,8 @@ const Hero = () => {
         <div className="absolute bottom-20 left-1/3 w-72 h-72 bg-pink-500 rounded-full  filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 z-10 rounded-md">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ">
+      <div className="w-full max-w-7xl mx-auto px-2 md:px-6 z-10 rounded-md">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center ">
           {/* Левая колонка: Текст */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
