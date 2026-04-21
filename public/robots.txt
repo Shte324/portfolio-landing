@@ -1,0 +1,6 @@
+# public/robots.txt
+User-agent: *
+Allow: /
+
+# Путь к карте сайта (добавим позже, когда будет готова)
+Sitemap: https://твой-домен.vercel.app/sitemap.xml
