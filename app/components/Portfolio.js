@@ -1,3 +1,5 @@
+
+
 // app/components/Portfolio.js
 "use client";
 
@@ -75,7 +77,7 @@ const Portfolio = () => {
             <motion.div
               key={design.id}
               variants={cardVariants}
-              className={`group relative bg-slate-800 rounded-xl overflow-hidden border transition-all duration-300 cursor-pointer
+              className={`group relative bg-slate-800 rounded-xl overflow-visible border transition-all duration-300 cursor-pointer
                 ${selectedStyle === design.id 
                   ? 'border-purple-500 shadow-lg shadow-purple-500/30 ring-1 ring-purple-500/50' 
                   : 'border-slate-700 hover:border-slate-600'
@@ -86,7 +88,7 @@ const Portfolio = () => {
               <div className={`h-1.5 w-full bg-gradient-to-r ${design.color}`}></div>
               
               {/* Изображение-заглушка */}
-              <div className="relative h-40 sm:h-44 bg-slate-700 overflow-hidden">
+              <div className="relative h-40 sm:h-44 bg-slate-700   overflow-visible">
                 <div className={`absolute inset-0 bg-gradient-to-br ${design.color} opacity-20`}></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <span className="text-4xl font-bold text-white/30">
@@ -97,8 +99,8 @@ const Portfolio = () => {
                   <FiEye className="text-white text-2xl" />
                 </div>
                 {selectedStyle === design.id && (
-                  <div className="absolute top-2 right-2 bg-purple-500 rounded-full p-1.5 shadow-lg">
-                    <FiCheck className="text-white text-sm" />
+                  <div className="absolute -top-6 right-10 bg-green-500 rounded-full p-1.5 shadow-lg">
+                    <FiCheck className="text-black text-lg" />
                   </div>
                 )}
               </div>
@@ -152,7 +154,7 @@ const Portfolio = () => {
         >
           <p className="text-gray-400 text-sm mb-4">
             {selectedStyle 
-              ? "Отлично! Теперь заполните форму ниже, и я свяжусь с вами для обсуждения деталей"
+              ? "Отлично! Теперь заполните форму ниже, и мы свяжемся с вами для обсуждения деталей..."
               : "Выберите подходящий стиль и заполните форму обратной связи"
             }
           </p>

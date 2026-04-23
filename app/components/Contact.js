@@ -203,10 +203,10 @@ const Contact = () => {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Свяжитесь со мной
+            Свяжитесь с нами
           </h2>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
-            Оставьте заявку, и я отвечу в течение 24 часов
+            Оставьте заявку, и вам ответят в течение 24 часов
           </p>
         </motion.div>
 
@@ -304,7 +304,7 @@ const Contact = () => {
                       ? 'border-red-500 focus:ring-red-500/30' 
                       : 'border-slate-700 focus:border-purple-500 focus:ring-purple-500/30'
                     }`}
-                  placeholder="Иван Иванов"
+                  placeholder="Ваше имя"
                 />
                 {errors.name && (
                   <p className="text-red-400 text-xs mt-1">{errors.name}</p>

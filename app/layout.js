@@ -14,12 +14,11 @@ const geistMono = Geist_Mono({
 
  
 export const metadata = {
-  title: "Григорий | JavaScript разработчик",
-  description: "Создаю быстрые лендинги и виджеты для бизнеса. Разработка на Next.js и Node.js.",
-  keywords: "javascript разработчик, next.js, react, фрилансер, лендинг, виджеты",
-  authors: [{ name: "Григорий" }],
+  title: "GeeRooWeb | web-разработка ,разработка лендингов , сайтов-визиток, веб-приложений",
+  description: "Разрабатываем быстрые лендинги, Telegram Mini Apps и виджеты для бизнеса. Работаем удалённо по всей России.",
+  keywords: "разработка лендингов, создание сайтов-визиток, веб-разработка, виджеты",
   openGraph: {
-    title: "Григорий | JavaScript разработчик",
+    title: "GeeRooWeb | JavaScript разработка",
     description: "Создаю быстрые лендинги и виджеты",
     type: "website",
     locale: "ru_RU",

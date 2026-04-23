@@ -40,3 +40,25 @@ body {
   background-color: #0f172a; /* slate-900 */
   color: white;
 }
+
+section[id] {
+  scroll-margin-top: 70px;
+}
+
+/* Анимация орбиты для Hero */
+@keyframes orbit {
+  0% {
+    transform: translate(-50%, -50%) 
+               rotate(-45deg) 
+               translateX(calc(min(40vw, 40vh) * 0.8))
+               translateY(calc(min(40vw, 40vh) * 0.5))
+               rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) 
+               rotate(315deg)
+               translateX(calc(min(40vw, 40vh) * 0.8))
+               translateY(calc(min(40vw, 40vh) * 0.5))
+               rotate(0deg);
+  }
+}
