@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Header = () => {
@@ -45,32 +44,45 @@ const Header = () => {
     >
       <div className="w-full max-w-7xl mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          
           {/* Логотип */}
-          <Link
+          {/* <Link
             href="#hero"
             className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 hover:opacity-80 transition-opacity"
           >
             GeeRooWeb
-          </Link>
+          </Link> */}
+
+          <a
+            href="#hero"
+            className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 hover:opacity-80 transition-opacity"
+          >
+            GeeRooWeb
+          </a>
 
           {/* Десктопная навигация */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <Link
+              //   <Link
+              //     key={item.name}
+              //     href={item.href}
+              //     className="text-gray-300 hover:text-white text-sm font-medium transition-colors duration-300"
+              //   >
+              //     {item.name}
+              //   </Link>
+              <a
                 key={item.name}
                 href={item.href}
                 className="text-gray-300 hover:text-white text-sm font-medium transition-colors duration-300"
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
-            <Link
+            <a
               href="#contact"
               className="px-5 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
             >
               Обсудить проект
-            </Link>
+            </a>
           </nav>
 
           {/* Кнопка мобильного меню */}
@@ -79,7 +91,11 @@ const Header = () => {
             className="md:hidden w-10 h-10 flex items-center justify-center text-white bg-slate-800/50 backdrop-blur-sm rounded-lg border border-slate-700"
             aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
           >
-            {isMobileMenuOpen ? <FiX className="text-xl" /> : <FiMenu className="text-xl" />}
+            {isMobileMenuOpen ? (
+              <FiX className="text-xl" />
+            ) : (
+              <FiMenu className="text-xl" />
+            )}
           </button>
         </div>
 
@@ -95,22 +111,22 @@ const Header = () => {
         >
           <nav className="flex flex-col gap-3 pt-4 pb-2">
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
                 onClick={handleLinkClick}
                 className="text-gray-300 hover:text-white text-base font-medium py-2 transition-colors duration-300"
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
-            <Link
+            <a
               href="#contact"
               onClick={handleLinkClick}
               className="mt-2 px-5 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-base font-medium rounded-full hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 text-center"
             >
               Обсудить проект
-            </Link>
+            </a>
           </nav>
         </motion.div>
       </div>

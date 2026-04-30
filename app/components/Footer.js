@@ -14,21 +14,24 @@ const Footer = () => {
     { name: "Услуги", href: "#services" },
     { name: "Портфолио", href: "#portfolio" },
     { name: "Контакты", href: "#contact" },
+    { name: "Справочная информация", href: "/legal" },
   ];
 
   // Социальные ссылки (замени на свои)
   const socialLinks = [
-    { icon: <FiGithub />, href: "https://github.com/твой-ник", label: "GitHub" },
-    { icon: <FiCode />, href: "https://t.me/твой-ник", label: "Telegram" },
+    {
+      icon: <FiGithub />,
+      href: "https://github.com/Shte324",
+      label: "GitHub",
+    },
+    { icon: <FiCode />, href: "https://t.me/@FrigExp", label: "Telegram" },
   ];
 
   return (
     <footer className="bg-slate-900 border-t border-slate-800">
       <div className="w-full max-w-6xl mx-auto px-3 py-8 md:py-10">
-        
         {/* Основная сетка */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          
           {/* Колонка 1: О себе */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -36,11 +39,9 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">
-              Григорий
-            </h3>
+            <h3 className="text-white font-bold text-lg mb-4">GeeRooWeb</h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              JavaScript разработчик. Создаю быстрые лендинги, Telegram Mini Apps и виджеты для бизнеса.
+              Создание лендингов, одностраничных сайтов-визиток, виджетов.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((link, idx) => (
@@ -65,9 +66,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">
-              Навигация
-            </h3>
+            <h3 className="text-white font-bold text-lg mb-4">Навигация</h3>
             <ul className="space-y-2">
               {navLinks.map((link, idx) => (
                 <li key={idx}>
@@ -89,9 +88,12 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-white font-bold text-lg mb-4">
-              Контакты
-            </h3>
+            <h3 className="text-white font-bold text-lg mb-4">Контакты</h3>
+
+            <Link href="/legal" className="text-gray-400 hover:text-white  mb-4 block">
+              Справочная информация
+            </Link>
+            
             <div className="space-y-3">
               <a
                 href="mailto:geerooland@gmail.com"
@@ -105,7 +107,7 @@ const Footer = () => {
                 className="flex items-center gap-3 text-gray-400 hover:text-white text-sm transition-colors duration-300"
               >
                 <FiPhone className="shrink-0" />
-                <span>+7 (999) 123-45-67</span>
+                <span>+7 (996) 223-10-16</span>
               </a>
             </div>
           </motion.div>
@@ -122,7 +124,7 @@ const Footer = () => {
           <p className="text-gray-500 text-xs md:text-sm">
             © {currentYear} Разработка веб приложений. Все права защищены.
           </p>
-          
+
           <div className="flex gap-6">
             <Link
               href="/privacy"

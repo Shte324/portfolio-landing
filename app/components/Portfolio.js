@@ -34,7 +34,7 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-16 md:py-20 px-3 bg-slate-900">
+    <section id="portfolio" className="pt-6 pb-16 md:pt-8 md:pb-20 px-3 bg-slate-900">
       <div className="w-full max-w-6xl mx-auto">
         
         {/* Заголовок секции */}
@@ -43,7 +43,7 @@ const Portfolio = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-12 md:mb-8"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Выберите стиль для вашего лендинга

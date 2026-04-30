@@ -26,7 +26,8 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br 
+                                  from-slate-900 via-purple-900 to-slate-900 rounded-xl">
      
 {/* Блок с изометрической орбитой */}
 <div className="absolute inset-0 w-full h-full overflow-hidden">

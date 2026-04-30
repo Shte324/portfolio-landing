@@ -53,7 +53,7 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-16 md:py-20 px-3 bg-slate-900">
+    <section id="services" className="pt-6 pb-16 md:pt-8 md:pb-20 px-3 bg-slate-900">
       <div className="w-full max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
